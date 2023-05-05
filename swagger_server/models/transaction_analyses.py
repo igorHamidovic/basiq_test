@@ -14,24 +14,29 @@ class TransactionAnalyses(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, category: str=None, average_spending: float=None):  # noqa: E501
+    def __init__(self, category: str=None, description: str=None, average_spending: float=None):  # noqa: E501
         """TransactionAnalyses - a model defined in Swagger
 
         :param category: The category of this TransactionAnalyses.  # noqa: E501
         :type category: str
+        :param description: The description of this TransactionAnalyses.  # noqa: E501
+        :type description: str
         :param average_spending: The average_spending of this TransactionAnalyses.  # noqa: E501
         :type average_spending: float
         """
         self.swagger_types = {
             'category': str,
+            'description': str,
             'average_spending': float
         }
 
         self.attribute_map = {
             'category': 'category',
+            'description': 'Description',
             'average_spending': 'AverageSpending'
         }
         self._category = category
+        self._description = description
         self._average_spending = average_spending
 
     @classmethod
@@ -49,7 +54,7 @@ class TransactionAnalyses(Model):
     def category(self) -> str:
         """Gets the category of this TransactionAnalyses.
 
-        test  # noqa: E501
+        Category Code  # noqa: E501
 
         :return: The category of this TransactionAnalyses.
         :rtype: str
@@ -60,7 +65,7 @@ class TransactionAnalyses(Model):
     def category(self, category: str):
         """Sets the category of this TransactionAnalyses.
 
-        test  # noqa: E501
+        Category Code  # noqa: E501
 
         :param category: The category of this TransactionAnalyses.
         :type category: str
@@ -69,10 +74,33 @@ class TransactionAnalyses(Model):
         self._category = category
 
     @property
+    def description(self) -> str:
+        """Gets the description of this TransactionAnalyses.
+
+        Category Description  # noqa: E501
+
+        :return: The description of this TransactionAnalyses.
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description: str):
+        """Sets the description of this TransactionAnalyses.
+
+        Category Description  # noqa: E501
+
+        :param description: The description of this TransactionAnalyses.
+        :type description: str
+        """
+
+        self._description = description
+
+    @property
     def average_spending(self) -> float:
         """Gets the average_spending of this TransactionAnalyses.
 
-        test  # noqa: E501
+        Average Spending  # noqa: E501
 
         :return: The average_spending of this TransactionAnalyses.
         :rtype: float
@@ -83,7 +111,7 @@ class TransactionAnalyses(Model):
     def average_spending(self, average_spending: float):
         """Sets the average_spending of this TransactionAnalyses.
 
-        test  # noqa: E501
+        Average Spending  # noqa: E501
 
         :param average_spending: The average_spending of this TransactionAnalyses.
         :type average_spending: float

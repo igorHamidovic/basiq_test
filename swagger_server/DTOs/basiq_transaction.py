@@ -45,6 +45,7 @@ class BasiqTransaction:
     def to_dataframe(transactions_from_basiq_api) -> DataFrame:
         transactions = list(map(lambda x: {
             "category": x.subClass['code'] if x.subClass else None,
+            "description": x.subClass['title'] if x.subClass else None,
             "amount": Decimal(x.amount)
         }, transactions_from_basiq_api))
         return pd.DataFrame(transactions)

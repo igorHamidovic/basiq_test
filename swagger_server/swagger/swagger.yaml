@@ -10,14 +10,52 @@ paths:
     get:
       tags:
       - Transactions
-      summary: test summary
-      description: test description
+      summary: Average spending amount
+      description: Average spending amount
       operationId: transaction_analyses_get
+      parameters:
+      - name: category
+        in: query
+        description: "Filtering by one or more categories like `category=451` or `category=451,452`"
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
         "200":
-          description: Test
+          description: Average spending amount response
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionAnalyses'
+                x-content-type: application/json
+        "403":
+          description: Unauthorized access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "503":
+          description: External service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "500":
+          description: Service temporary unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
       x-openapi-router-controller: swagger_server.controllers.transactions_controller
 components:
   schemas:
@@ -26,8 +64,20 @@ components:
       properties:
         category:
           type: string
-          description: test
+          description: Category Code
+        Description:
+          type: string
+          description: Category Description
         AverageSpending:
           type: number
-          description: test
+          description: Average Spending
+      example:
+        AverageSpending: 0.8008281904610115
+        category: category
+    ErrorResponse:
+      type: object
+      properties:
+        details:
+          type: string
+          description: Error description
 
