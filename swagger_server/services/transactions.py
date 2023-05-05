@@ -1,12 +1,16 @@
+import logging
 from swagger_server.repositories.BasiqApiRepo import BasiqApiRepo
 from swagger_server.DTOs.basiq_transaction import BasiqTransaction
 from swagger_server.models.transaction_analyses import TransactionAnalyses
+
+logger = logging.getLogger('connexion.app')
 
 
 class Transactions:
     def calculate_average_spending(self, category=None):
         transactions = self._load_data_from_api(category)
         transactions = BasiqTransaction.to_dataframe(transactions)
+        logger.info(f"{transactions}")
         mean_transactions = transactions.groupby(['category', 'description'])['amount'].mean()
         return [TransactionAnalyses(
             category=k[0],

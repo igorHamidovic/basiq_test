@@ -1,6 +1,9 @@
+import logging
 from swagger_server.services.transactions import Transactions
 from http_exceptions import BadRequestException, UnauthorizedException, HTTPException
 from swagger_server.models.error_response import ErrorResponse
+
+logger = logging.getLogger('connexion.app')
 
 
 def transaction_analyses_get(category=None):  # noqa: E501
@@ -16,4 +19,5 @@ def transaction_analyses_get(category=None):  # noqa: E501
     except HTTPException as ex:
         return ErrorResponse(details=ex.message), 503
     except Exception as ex:
+        logger.exception(f"{ex}")
         return ErrorResponse(details=str(ex)), 500
