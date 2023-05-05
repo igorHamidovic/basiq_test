@@ -6,7 +6,7 @@ info:
 servers:
 - url: /api/v1
 paths:
-  /transaction/analyses:
+  /transaction/avg_spending:
     get:
       tags:
       - Transactions
