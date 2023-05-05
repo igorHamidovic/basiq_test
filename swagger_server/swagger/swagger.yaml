@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: Transaction Analyzes
+  description: Bank transaction analyzes
+  version: 1.0.0
+servers:
+- url: /api/v1
+paths:
+  /transaction/analyses:
+    get:
+      tags:
+      - Transactions
+      summary: test summary
+      description: test description
+      operationId: transaction_analyses_get
+      responses:
+        "200":
+          description: Test
+          content:
+            application/json: {}
+      x-openapi-router-controller: swagger_server.controllers.transactions_controller
+components:
+  schemas:
+    TransactionAnalyses:
+      type: object
+      properties:
+        category:
+          type: string
+          description: test
+        AverageSpending:
+          type: number
+          description: test
+

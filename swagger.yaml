@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  description: Bank transaction analyzes
+  version: 1.0.0
+  title: Transaction Analyzes
+
+servers:
+  - url: /api/v1
+
+paths:
+  "/transaction/analyses":
+    get:
+      summary: test summary
+      description: test description
+      tags:
+        - Transactions
+      responses:
+        "200":
+          description: Test
+          content:
+            application/json:
+              type: array
+              items:
+                $ref: "#/components/schemas/TransactionAnalyses"
+
+components:
+  schemas:
+    TransactionAnalyses:
+      type: object
+      properties:
+        category:
+          type: string
+          description: test
+        AverageSpending:
+          type: number
+          description: test
